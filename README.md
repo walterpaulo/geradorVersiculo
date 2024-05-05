@@ -11,7 +11,7 @@
 - `API;e`
 - `JSON`
 
-
+!["home"](src/main/resources/static/image/home.png)
 
 ## Como iniciar o Spring com o `mvnw`:
 
