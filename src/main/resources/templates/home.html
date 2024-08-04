@@ -6,8 +6,27 @@
 <link th:href="@{css/bootstrap.min.css}" rel="stylesheet">
 </head>
 <body>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Gerador de Versículos</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</nav>
 	<div class="container text-center">
 		<div class="row justify-content-md-center">
+			<ul class="nav justify-content-center">
+				<li class="nav-item"><a class="nav-link active"
+					aria-current="page" href="/">HTML</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="/api/v1/versiculo/json">JSON</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="/api/v1/versiculo/xml">XML</a></li>
+			</ul>
 			<div class="col-md-auto">
 				<div th:switch="${versiculo}" class="container">
 					<h2 th:case="null">Não há versículo nesse momento!</h2>
@@ -26,7 +45,7 @@
 									</small>
 									<div class="mt-2">
 										<span class="p-0" style="cursor: pointer;"> <a
-											th:href="@{'https://api.whatsapp.com/send?text=' + ${versiculo.verso} + '%0A' + versiculo.nome + ' ' + versiculo.capitulo + ':'+ versiculo.versiculo +' ' + versiculo.versao.toUpperCase() +'%0A'}"
+											th:href="'https://api.whatsapp.com/send?text=' + ${versiculo.verso} + '%0A%0A*' + ${versiculo.nome} + ' ' + ${versiculo.capitulo} + ':'+ ${versiculo.versiculo} +' ' + ${versiculo.versao.toUpperCase()} +'*%0A'"
 											target="_blank" rel="noopener"> <img
 												src="https://www.svgrepo.com/show/349563/whatsapp.svg"
 												width="25" height="25">
@@ -57,11 +76,12 @@
 		</div>
 	</div>
 	<div class="footer fixed-bottom bg-dark text-white text-center py-3">
-		<p class="m-0">Este projeto é destinado para estudos.<p></p>
+		<p class="m-0">Este projeto é destinado para estudos.
+		<p></p>
 
 
-			Desenvolvedor Web | <a href="https://www.walterpaulo.com.br"
-				class="text-white" target="_blank">Walter Paulo</a>
+		Desenvolvedor Web | <a href="https://www.walterpaulo.com.br"
+			class="text-white" target="_blank">Walter Paulo</a>
 		</p>
 	</div>
 </body>

@@ -11,7 +11,22 @@
 - `API;e`
 - `JSON`
 
-!["home"](src/main/resources/static/image/home.png)
+## Rotas:
+- http://localhost:8080
+
+!["home"](src/main/resources/static/image/retorno-html.png)
+
+- http://localhost:8080/api/v1/versiculo/json
+
+!["json"](src/main/resources/static/image/retorno-json.png)
+
+- http://localhost:8080/api/v1/versiculo/xml
+
+!["xml"](src/main/resources/static/image/retorno-xml.png)
+
+## Padrão Abstract Factory para retornar versículos no formato JSON ou XML
+!["home"](src/main/resources/static/image/Abstract%20Factory%20-api%20de%20gerador%20de%20versículo.png)
+
 
 ## Como iniciar o Spring com o `mvnw`:
 
