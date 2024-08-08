@@ -1,6 +1,7 @@
 package com.walterpaulo.geradorVersiculo.service;
 
 import java.net.URI;
+import java.util.Map;
 import java.util.Objects;
 
 import org.springframework.core.env.Environment;
@@ -8,12 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.walterpaulo.geradorVersiculo.modelo.FormatoArquivo;
 import com.walterpaulo.geradorVersiculo.modelo.VersiculoResponse;
 import com.walterpaulo.geradorVersiculo.modelo.abstractFactorFormatoy.Application;
 import com.walterpaulo.geradorVersiculo.modelo.abstractFactorFormatoy.GUIFactory;
-import com.walterpaulo.geradorVersiculo.modelo.abstractFactorFormatoy.JsonFactory;
-import com.walterpaulo.geradorVersiculo.modelo.abstractFactorFormatoy.XmlFactory;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +23,7 @@ public class VersiculoService {
 
 	private Environment environment;
 	private ObjectMapper objectMapper;
+	private final Map<String, GUIFactory> tiposArquivos;
 
 	public VersiculoResponse buscarVersiculo() {
 		try {
@@ -45,22 +44,24 @@ public class VersiculoService {
 		return null;
 	}
 
-	public String geradorVersiculoPorFormato(FormatoArquivo formato) {
+	public String geradorVersiculoPorFormato(String formato) {
 		Application app;
-		GUIFactory factory = null;
+		GUIFactory fabrica = null;
 
 		VersiculoResponse versiculo = this.buscarVersiculo();
 
-		if (FormatoArquivo.JSON.equals(formato)) {
-			factory = new JsonFactory();
-		} else if (FormatoArquivo.XML.equals(formato)) {
-			factory = new XmlFactory();
-		}
-		app = new Application(factory);
-
-		System.out.println(app.retornarAquivo(versiculo));
+		fabrica = criarFormato(formato);
+		app = new Application(fabrica);
 
 		return app.retornarAquivo(versiculo);
+	}
+
+	public GUIFactory criarFormato(String formato) {
+		GUIFactory tipoArquivo = tiposArquivos.get(formato);
+		if (Objects.isNull(tipoArquivo)) {
+			throw new IllegalArgumentException("Formato não suportado");
+		}
+		return tipoArquivo;
 	}
 
 }

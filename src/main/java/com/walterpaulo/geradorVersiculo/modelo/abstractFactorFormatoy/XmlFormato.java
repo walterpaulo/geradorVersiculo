@@ -10,9 +10,7 @@ public class XmlFormato implements FormatoArquivo {
 	public String retornarAquivo(VersiculoResponse versiculoResponse) {
 
 		XStream xstream = new XStream(new StaxDriver());
-
 		xstream.processAnnotations(VersiculoResponse.class);
-//		xstream.alias("versiculo", VersiculoResponse.class);
 
 		return xstream.toXML(versiculoResponse);
 

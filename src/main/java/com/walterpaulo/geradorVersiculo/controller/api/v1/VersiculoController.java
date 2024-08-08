@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.walterpaulo.geradorVersiculo.modelo.FormatoArquivo;
+import com.walterpaulo.geradorVersiculo.modelo.abstractFactorFormatoy.TipoArquivo;
 import com.walterpaulo.geradorVersiculo.service.VersiculoService;
 
 @RestController
@@ -18,12 +18,12 @@ public class VersiculoController {
 
 	@GetMapping(path = "/json", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String geradorVersiculoJson() {
-		return versiculoService.geradorVersiculoPorFormato(FormatoArquivo.JSON);
+		return versiculoService.geradorVersiculoPorFormato(TipoArquivo.JSON);
 	}
 
 	@GetMapping(path = "/xml", produces = MediaType.APPLICATION_XML_VALUE)
 	public String geradorVersiculoXml() {
-		return versiculoService.geradorVersiculoPorFormato(FormatoArquivo.XML);
+		return versiculoService.geradorVersiculoPorFormato(TipoArquivo.XML);
 	}
 
 }

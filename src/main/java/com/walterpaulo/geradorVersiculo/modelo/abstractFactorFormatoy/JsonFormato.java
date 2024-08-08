@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.walterpaulo.geradorVersiculo.modelo.VersiculoResponse;
 
-
 public class JsonFormato implements FormatoArquivo {
 
 	@Override
