@@ -1,0 +1,25 @@
+{
+    "name": "Consume Versículo Bíblico",
+
+    "dockerComposeFile": [
+        "docker-compose.yml"
+    ],
+
+    "service": "geradorversiculo",
+
+    "workspaceFolder": "/workspace",
+    
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-azuretools.vscode-docker",
+                "vscjava.vscode-java-pack",
+                "pivotal.vscode-spring-boot"
+            ]
+        }
+    },
+
+    "postCreateCommand": "mvn spring-boot:run",
+
+    "remoteUser": "vscode"
+}
