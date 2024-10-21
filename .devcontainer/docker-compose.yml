@@ -2,10 +2,10 @@ version: '3.3'
 
 services:
   geradorversiculo:
-    container_name: geradorversiculo
+    container_name: "geradorversiculo-app"
     build:
-      context: ../
-      dockerfile: .devcontainer/Dockerfile
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - ../:/workspace:cached
     ports:
